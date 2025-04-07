@@ -40,10 +40,18 @@ input {
   }
 }
 
-.password-field {
+#password-input {
   display: flex;
+  gap: 10px;
   flex-direction: column;
   width: 100%;
+  & .password {
+    display: flex;
+    flex-grow: 2;
+    #password-field {
+      flex-grow: 2;
+    }
+  }
 }
 
 #actions {

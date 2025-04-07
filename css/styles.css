@@ -63,18 +63,24 @@ footer {
   transform: translate(-150%, -50%);
 }
 
-#success-message {
+.success-message {
   font-size: 12px;
   color: #008000;
   text-align: start;
   width: 100%;
 }
+.success-message span {
+  color: #008000;
+}
 
-#error-message {
+.error-message {
   font-size: 12px;
   color: #ff0000;
   text-align: start;
   width: 100%;
+}
+.error-message span {
+  color: #ff0000;
 }
 
 input {
@@ -117,10 +123,18 @@ input {
   flex-grow: 2;
 }
 
-.password-field {
+#password-input {
   display: flex;
+  gap: 10px;
   flex-direction: column;
   width: 100%;
+}
+#password-input .password {
+  display: flex;
+  flex-grow: 2;
+}
+#password-input .password #password-field {
+  flex-grow: 2;
 }
 
 #actions {

@@ -31,16 +31,22 @@
   }
 }
 
-#success-message {
+.success-message {
   font-size: 12px;
   color: $green-color;
   text-align: start;
   width: 100%;
+  & span {
+    color: $green-color;
+  }
 }
 
-#error-message {
+.error-message {
   font-size: 12px;
   color: $red-color;
   text-align: start;
   width: 100%;
+  & span {
+    color: $red-color;
+  }
 }
