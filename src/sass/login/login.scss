@@ -1,1 +1,95 @@
+#login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 420px;
+  height: 420px;
+  background-color: $white-color;
+}
 
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 48px;
+  width: 100%;
+}
+
+.icon {
+  position: relative;
+}
+
+.email-field {
+  display: flex;
+  width: 100%;
+  & input {
+    flex-grow: 2;
+  }
+}
+
+.password-field {
+  display: flex;
+  width: 100%;
+  & input {
+    flex-grow: 2;
+  }
+}
+
+input {
+  padding: 12px 24px;
+  border-color: $grey-color;
+  &:focus {
+    overflow: hidden;
+    &:valid {
+      border-color: $green-color;
+      outline-color: $green-color;
+      box-shadow: 0 0 5px $green-color;
+      position: relative;
+      + .icon::after {
+        position: absolute;
+        content: "✅";
+        top: 50%;
+        left: -100%;
+        transform: translate(-150%, -50%);
+      }
+    }
+  }
+}
+
+input {
+  &:focus {
+    &:not(:valid) {
+      border-color: $red-color;
+      outline-color: $red-color;
+      box-shadow: 0 0 5px $red-color;
+      position: relative;
+      + .icon::after {
+        position: absolute;
+        content: "❌";
+        color: $red-color;
+        top: 50%;
+        left: 100%;
+        transform: translate(-150%, -50%);
+      }
+    }
+  }
+}
+
+#actions {
+  width: 100%;
+  #login-button {
+    padding: 12px 24px;
+    background-color: $teal-color;
+    color: $white-color;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: $light-teal-color;
+    }
+  }
+}

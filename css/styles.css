@@ -1,23 +1,123 @@
+@charset "UTF-8";
 body {
   height: 100vh;
   max-width: 100%;
   background-color: #009578;
 }
 
-main,
-section {
+main {
   height: 100%;
   width: 100%;
 }
 
-section {
+section,
+main {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 24px 36px;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+#login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 420px;
+  height: 420px;
+  background-color: #fff;
+}
+
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 48px;
+  width: 100%;
+}
+
+.icon {
+  position: relative;
+}
+
+.email-field {
+  display: flex;
+  width: 100%;
+}
+.email-field input {
+  flex-grow: 2;
+}
+
+.password-field {
+  display: flex;
+  width: 100%;
+}
+.password-field input {
+  flex-grow: 2;
+}
+
+input {
+  padding: 12px 24px;
+  border-color: #808080;
+}
+input:focus {
+  overflow: hidden;
+}
+input:focus:valid {
+  border-color: #008000;
+  outline-color: #008000;
+  box-shadow: 0 0 5px #008000;
+  position: relative;
+}
+input:focus:valid + .icon::after {
+  position: absolute;
+  content: "✅";
+  top: 50%;
+  left: -100%;
+  transform: translate(-150%, -50%);
+}
+
+input:focus:not(:valid) {
+  border-color: #ff0000;
+  outline-color: #ff0000;
+  box-shadow: 0 0 5px #ff0000;
+  position: relative;
+}
+input:focus:not(:valid) + .icon::after {
+  position: absolute;
+  content: "❌";
+  color: #ff0000;
+  top: 50%;
+  left: 100%;
+  transform: translate(-150%, -50%);
+}
+
+#actions {
+  width: 100%;
+}
+#actions #login-button {
+  padding: 12px 24px;
+  background-color: #009578;
+  color: #fff;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+#actions #login-button:hover {
+  background-color: #06bc98;
 }/*# sourceMappingURL=styles.css.map */

@@ -9,23 +9,41 @@
   <body>
     <header></header>
     <main>
-      <section id="login-form">
-        <form>
+      <section id="login-section">
+        <h1>Login</h1>
+        <form id="login-form">
           <div class="email-field">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+            <div class="icon"></div>
           </div>
+          <div class="email-error-field"></div>
           <div class="password-field">
-            <label for="password">Password</label>
-            <input type="text" name="password" id="password" />
+            <input
+              type="text"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+              maxlength="8"
+              required
+            />
+            <div class="icon"></div>
           </div>
-          <div class="action">
-            <button type="submit">Login</button>
+          <div class="password-error-field"></div>
+          <div id="actions">
+            <button type="submit" id="login-button">Login</button>
           </div>
         </form>
       </section>
     </main>
-    <footer></footer>
+    <footer>
+      <span>Done by Diaa Sharqawi 🩵</span>
+    </footer>
     <script src="./src/js/index.js"></script>
   </body>
 </html>

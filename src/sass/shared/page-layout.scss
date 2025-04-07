@@ -3,13 +3,22 @@ body {
   max-width: 100%;
   background-color: $teal-color;
 }
-main,
-section {
+
+main {
   height: 100%;
   width: 100%;
 }
-section {
+
+section,
+main {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  color: $white-color;
+  padding: 24px 36px;
 }
