@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   padding: 24px 48px;
   width: 100%;
 }
@@ -42,40 +42,35 @@
 input {
   padding: 12px 24px;
   border-color: $grey-color;
-  &:focus {
-    overflow: hidden;
-    &:valid {
-      border-color: $green-color;
-      outline-color: $green-color;
-      box-shadow: 0 0 5px $green-color;
-      position: relative;
-      + .icon::after {
-        position: absolute;
-        content: "✅";
-        top: 50%;
-        left: -100%;
-        transform: translate(-150%, -50%);
-      }
-    }
+}
+
+.valid-state {
+  overflow: hidden;
+  border-color: $green-color;
+  outline-color: $green-color;
+  box-shadow: 0 0 5px $green-color;
+  position: relative;
+  + .icon::after {
+    position: absolute;
+    content: "✅";
+    top: 50%;
+    left: -100%;
+    transform: translate(-150%, -50%);
   }
 }
 
-input {
-  &:focus {
-    &:not(:valid) {
-      border-color: $red-color;
-      outline-color: $red-color;
-      box-shadow: 0 0 5px $red-color;
-      position: relative;
-      + .icon::after {
-        position: absolute;
-        content: "❌";
-        color: $red-color;
-        top: 50%;
-        left: 100%;
-        transform: translate(-150%, -50%);
-      }
-    }
+.not-valid-state {
+  border-color: $red-color;
+  outline-color: $red-color;
+  box-shadow: 0 0 5px $red-color;
+  position: relative;
+  + .icon::after {
+    position: absolute;
+    content: "❌";
+    color: $red-color;
+    top: 50%;
+    left: 100%;
+    transform: translate(-150%, -50%);
   }
 }
 
@@ -92,4 +87,18 @@ input {
       background-color: $light-teal-color;
     }
   }
+}
+
+#email-success-message {
+  font-size: 12px;
+  color: $green-color;
+  text-align: start;
+  width: 100%;
+}
+
+#email-error-message {
+  font-size: 12px;
+  color: $red-color;
+  text-align: start;
+  width: 100%;
 }
