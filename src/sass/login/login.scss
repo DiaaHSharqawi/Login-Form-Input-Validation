@@ -1,0 +1,70 @@
+@import "../shared/validation-input-states.scss";
+
+input {
+  padding: 12px 24px;
+  border-color: $grey-color;
+}
+
+#login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 420px;
+  height: 420px;
+  background-color: $white-color;
+}
+
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 48px;
+  width: 100%;
+}
+
+#email-input {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+  & .email {
+    display: flex;
+    flex-grow: 2;
+    #email-field {
+      flex-grow: 2;
+    }
+  }
+}
+
+#password-input {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+  & .password {
+    display: flex;
+    flex-grow: 2;
+    #password-field {
+      flex-grow: 2;
+    }
+  }
+}
+
+#actions {
+  width: 100%;
+  #login-button {
+    padding: 12px 24px;
+    background-color: $teal-color;
+    color: $white-color;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: $light-teal-color;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  padding: 24px 48px;
+  width: 420px;
+  height: 420px;
+  background-color: white;
+}
+
+.icon {
+  position: relative;
+}
+
+.email-field {
+  display: flex;
+  width: 100%;
+}
+.email-field input {
+  flex-grow: 2;
+}
+
+.password-field {
+  display: flex;
+  width: 100%;
+}
+.password-field input {
+  flex-grow: 2;
+}
+
+input {
+  padding: 12px 24px;
+  border-color: grey;
+}
+input:focus {
+  overflow: hidden;
+}
+input:focus:valid {
+  border-color: green;
+  box-shadow: 0 0 5px green;
+  position: relative;
+}
+input:focus:valid + .icon::after {
+  position: absolute;
+  content: "✅";
+  top: 50%;
+  left: -100%;
+  transform: translate(-150%, -50%);
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-5px, 0);
+  }
+  50% {
+    transform: translate(-5px, 0);
+  }
+  75% {
+    transform: translate(-5px, 0);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+input:focus:not(:valid) {
+  border-color: red;
+  box-shadow: 0 0 5px red;
+  position: relative;
+}
+input:focus:not(:valid) + .icon::after {
+  position: absolute;
+  content: "❌";
+  color: red;
+  top: 50%;
+  left: 100%;
+  transform: translate(-150%, -50%);
+  animation: shake 0.2s ease-in-out;
+}
+
+#login-button {
+  padding: 12px 24px;
+  background-color: #04aa6d;
+}/*# sourceMappingURL=login.css.map */
