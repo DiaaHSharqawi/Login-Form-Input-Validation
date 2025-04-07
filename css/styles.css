@@ -136,6 +136,14 @@ input {
 #password-input .password #password-field {
   flex-grow: 2;
 }
+#password-input .eye {
+  color: #009578;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  font-size: 18px;
+}
 
 #actions {
   width: 100%;

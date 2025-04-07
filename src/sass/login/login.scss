@@ -52,6 +52,14 @@ input {
       flex-grow: 2;
     }
   }
+  & .eye {
+    color: $teal-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    font-size: 18px;
+  }
 }
 
 #actions {
