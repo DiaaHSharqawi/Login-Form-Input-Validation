@@ -32,6 +32,9 @@ const passwordErrorMessage = document.querySelector(
   `#password-input > .messages ${ERROR_MESSAGE_CLASS}`
 );
 
+const eye = document.querySelector(".eye i");
+eye.addEventListener("click", triggerPasswordEye);
+
 function handleEmailChange() {
   const emailFieldValue = emailField.value;
   if (isBlank(emailFieldValue)) {
@@ -112,5 +115,17 @@ function handelPasswordChange() {
       })
       .join("");
     setValidState(passwordField, INVALID_STATE);
+  }
+}
+
+function triggerPasswordEye() {
+  const eyeClassName = eye.className.split(" ");
+  const eyeType = eyeClassName[1];
+  if (eyeType === "fa-eye-slash") {
+    eye.className = `fa-solid fa-eye`;
+    passwordField.type = "text";
+  } else {
+    eye.className = `fa-solid fa-eye-slash`;
+    passwordField.type = "password";
   }
 }
