@@ -1,3 +1,10 @@
+@import "../shared/validation-input-states.scss";
+
+input {
+  padding: 12px 24px;
+  border-color: $grey-color;
+}
+
 #login-section {
   display: flex;
   justify-content: center;
@@ -19,59 +26,24 @@
   width: 100%;
 }
 
-.icon {
-  position: relative;
-}
-
-.email-field {
+#email-input {
   display: flex;
+  gap: 10px;
+  flex-direction: column;
   width: 100%;
-  & input {
+  & .email {
+    display: flex;
     flex-grow: 2;
+    #email-field {
+      flex-grow: 2;
+    }
   }
 }
 
 .password-field {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  & input {
-    flex-grow: 2;
-  }
-}
-
-input {
-  padding: 12px 24px;
-  border-color: $grey-color;
-}
-
-.valid-state {
-  overflow: hidden;
-  border-color: $green-color;
-  outline-color: $green-color;
-  box-shadow: 0 0 5px $green-color;
-  position: relative;
-  + .icon::after {
-    position: absolute;
-    content: "✅";
-    top: 50%;
-    left: -100%;
-    transform: translate(-150%, -50%);
-  }
-}
-
-.not-valid-state {
-  border-color: $red-color;
-  outline-color: $red-color;
-  box-shadow: 0 0 5px $red-color;
-  position: relative;
-  + .icon::after {
-    position: absolute;
-    content: "❌";
-    color: $red-color;
-    top: 50%;
-    left: 100%;
-    transform: translate(-150%, -50%);
-  }
 }
 
 #actions {
@@ -87,18 +59,4 @@ input {
       background-color: $light-teal-color;
     }
   }
-}
-
-#email-success-message {
-  font-size: 12px;
-  color: $green-color;
-  text-align: start;
-  width: 100%;
-}
-
-#email-error-message {
-  font-size: 12px;
-  color: $red-color;
-  text-align: start;
-  width: 100%;
 }

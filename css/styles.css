@@ -30,54 +30,11 @@ footer {
   box-sizing: border-box;
 }
 
-#login-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 12px;
-  width: 420px;
-  height: 420px;
-  background-color: #fff;
-}
-
-#login-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px 48px;
-  width: 100%;
-}
-
 .icon {
   position: relative;
 }
 
-.email-field {
-  display: flex;
-  width: 100%;
-}
-.email-field input {
-  flex-grow: 2;
-}
-
-.password-field {
-  display: flex;
-  width: 100%;
-}
-.password-field input {
-  flex-grow: 2;
-}
-
-input {
-  padding: 12px 24px;
-  border-color: #808080;
-}
-
 .valid-state {
-  overflow: hidden;
   border-color: #008000;
   outline-color: #008000;
   box-shadow: 0 0 5px #008000;
@@ -106,6 +63,66 @@ input {
   transform: translate(-150%, -50%);
 }
 
+#success-message {
+  font-size: 12px;
+  color: #008000;
+  text-align: start;
+  width: 100%;
+}
+
+#error-message {
+  font-size: 12px;
+  color: #ff0000;
+  text-align: start;
+  width: 100%;
+}
+
+input {
+  padding: 12px 24px;
+  border-color: #808080;
+}
+
+#login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 420px;
+  height: 420px;
+  background-color: #fff;
+}
+
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 48px;
+  width: 100%;
+}
+
+#email-input {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+}
+#email-input .email {
+  display: flex;
+  flex-grow: 2;
+}
+#email-input .email #email-field {
+  flex-grow: 2;
+}
+
+.password-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 #actions {
   width: 100%;
 }
@@ -119,18 +136,4 @@ input {
 }
 #actions #login-button:hover {
   background-color: #06bc98;
-}
-
-#email-success-message {
-  font-size: 12px;
-  color: #008000;
-  text-align: start;
-  width: 100%;
-}
-
-#email-error-message {
-  font-size: 12px;
-  color: #ff0000;
-  text-align: start;
-  width: 100%;
 }/*# sourceMappingURL=styles.css.map */

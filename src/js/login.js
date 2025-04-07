@@ -4,13 +4,18 @@ import {
   VALIDATION_MESSAGES,
 } from "./utils/validationUtils.js";
 
-const EMAIL_VALID_MESSAGE = "email-success-message";
-const EMAIL_INVALID_MESSAGE = "email-error-message";
-const EMAIL_VALID_STATE = "valid-state";
-const EMAIL_INVALID_STATE = "not-valid-state";
-const emailSuccessMessage = document.getElementById(EMAIL_VALID_MESSAGE);
-const emailErrorMessage = document.getElementById(EMAIL_INVALID_MESSAGE);
-const emailField = document.getElementById("email");
+const SUCCESS_MESSAGE_CLASS = ".success-message";
+const ERROR_MESSAGE_CLASS = ".error-message";
+const VALID_STATE = "valid-state";
+const INVALID_STATE = "not-valid-state";
+
+const emailSuccessMessage = document.querySelector(
+  `#email-input > .messages ${SUCCESS_MESSAGE_CLASS}`
+);
+const emailErrorMessage = document.querySelector(
+  `#email-input > .messages ${ERROR_MESSAGE_CLASS}`
+);
+const emailField = document.getElementById("email-field");
 emailField.addEventListener("input", handleEmailChange);
 
 const passwordField = document.getElementById("password");
@@ -30,7 +35,7 @@ function handleEmailChange() {
     emailField.setCustomValidity(``);
     emailSuccessMessage.innerHTML = `Looks good ✅`;
     emailErrorMessage.innerHTML = ``;
-    triggerValidState(EMAIL_VALID_STATE);
+    setValidState(emailField, VALID_STATE);
   }
   if (emailField.validationMessage) {
     emailSuccessMessage.innerHTML = ``;
@@ -38,10 +43,11 @@ function handleEmailChange() {
     ${emailField.validationMessage} ❌
     <span>
   `;
-    triggerValidState(EMAIL_INVALID_STATE);
+    setValidState(emailField, INVALID_STATE);
   }
 }
 
-function triggerValidState(state) {
-  emailField.className = state;
+function setValidState(inputField, state) {
+  console.log(`inputFiel d: ${inputField}`);
+  inputField.className = state;
 }

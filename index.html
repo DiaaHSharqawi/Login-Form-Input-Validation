@@ -12,18 +12,23 @@
       <section id="login-section">
         <h1>Login</h1>
         <form id="login-form">
-          <div class="email-field">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email"
-              required
-            />
-            <div class="icon"></div>
+          <div id="email-input">
+            <div class="email">
+              <input
+                type="email"
+                name="email-field"
+                id="email-field"
+                placeholder="Enter your email"
+                required
+              />
+              <div class="icon"></div>
+            </div>
+            <div class="messages">
+              <div class="success-message"></div>
+              <div class="error-message"></div>
+            </div>
           </div>
-          <div id="email-success-message"></div>
-          <div id="email-error-message"></div>
+
           <div class="password-field">
             <input
               type="text"
