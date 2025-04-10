@@ -35,29 +35,37 @@ const passwordErrorMessage = document.querySelector(
 const eye = document.querySelector(".eye i");
 eye.addEventListener("click", triggerPasswordEye);
 
+const formField = document.getElementById("login-form");
+formField.addEventListener("submit", handleLoginFormSubmit);
+function handleLoginFormSubmit() {}
+
 function handleEmailChange() {
+  const errorMessages = [];
   const emailFieldValue = emailField.value;
   if (isBlank(emailFieldValue)) {
-    emailField.setCustomValidity(VALIDATION_MESSAGES.PLEASE_ENTER_YOUR_EMAIL);
+    errorMessages.push(VALIDATION_MESSAGES.PLEASE_ENTER_YOUR_EMAIL);
   }
   if (!isEmail(emailFieldValue)) {
     console.log(`Not valid email`);
-    emailField.setCustomValidity(
+    errorMessages.push(
       VALIDATION_MESSAGES.PLEASE_MAKE_SURE_TO_ENTER_A_VALID_EMAIL
     );
-  } else {
-    console.log(`Looks good `);
-    emailField.setCustomValidity(``);
+  }
+  if (errorMessages.length === 0) {
     emailSuccessMessage.innerHTML = `Looks good ✅`;
     emailErrorMessage.innerHTML = ``;
     setValidState(emailField, VALID_STATE);
-  }
-  if (emailField.validationMessage) {
+  } else {
     emailSuccessMessage.innerHTML = ``;
-    emailErrorMessage.innerHTML = `<span>
-    ${emailField.validationMessage} ❌
-    <span>
-  `;
+    emailErrorMessage.innerHTML = errorMessages
+      .map((errorMessage) => {
+        return `<span>
+        ${errorMessage} ❌
+        <span>
+        <br>
+      `;
+      })
+      .join("");
     setValidState(emailField, INVALID_STATE);
   }
 }
