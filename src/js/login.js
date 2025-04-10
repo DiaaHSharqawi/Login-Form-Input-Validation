@@ -18,108 +18,171 @@ const ERROR_MESSAGE_CLASS = ".error-message";
 const VALID_STATE = "valid-state";
 const INVALID_STATE = "not-valid-state";
 
+let isValidEmail = false;
+let isValidPassword = false;
+
 const emailField = document.getElementById("email-field");
-emailField.addEventListener("input", handleEmailChange);
-const emailSuccessMessage = document.querySelector(
-  `#email-input > .messages ${SUCCESS_MESSAGE_CLASS}`
-);
-const emailErrorMessage = document.querySelector(
-  `#email-input > .messages ${ERROR_MESSAGE_CLASS}`
-);
+emailField.addEventListener("input", validateEmail);
+
+const emailFieldValidationElements = {
+  successMessageElement: document.querySelector(
+    `#email-input > .messages ${SUCCESS_MESSAGE_CLASS}`
+  ),
+  errorMessageElement: document.querySelector(
+    `#email-input > .messages ${ERROR_MESSAGE_CLASS}`
+  ),
+};
 
 const passwordField = document.getElementById("password-field");
-passwordField.addEventListener("input", handelPasswordChange);
-const passwordSuccessMessage = document.querySelector(
-  `#password-input > .messages ${SUCCESS_MESSAGE_CLASS}`
-);
-const passwordErrorMessage = document.querySelector(
-  `#password-input > .messages ${ERROR_MESSAGE_CLASS}`
-);
+const passwordFieldValidationElements = {
+  successMessageElement: document.querySelector(
+    `#password-input > .messages ${SUCCESS_MESSAGE_CLASS}`
+  ),
+  errorMessageElement: document.querySelector(
+    `#password-input > .messages ${ERROR_MESSAGE_CLASS}`
+  ),
+};
+passwordField.addEventListener("input", validatePassword);
 
 const eye = document.querySelector(".eye i");
 eye.addEventListener("click", triggerPasswordEye);
 
-function handleEmailChange() {
-  const emailFieldValue = emailField.value;
-  if (isBlank(emailFieldValue)) {
-    emailField.setCustomValidity(VALIDATION_MESSAGES.PLEASE_ENTER_YOUR_EMAIL);
-  }
-  if (!isEmail(emailFieldValue)) {
-    console.log(`Not valid email`);
-    emailField.setCustomValidity(
-      VALIDATION_MESSAGES.PLEASE_MAKE_SURE_TO_ENTER_A_VALID_EMAIL
-    );
+const formField = document.getElementById("login-form");
+formField.addEventListener("submit", handleLoginFormSubmit);
+
+const loginResultElement = document.getElementById("login-result");
+
+function handleLoginFormSubmit(e) {
+  loginResultElement.innerHTML = ``;
+  e.preventDefault();
+  validateEmail();
+  validatePassword();
+  if (isValidEmail && isValidPassword) {
+    // Send email and password to the backend
+    loginResultElement.innerHTML = `Data sent successfully`;
+    loginResultElement.style.color = "green";
   } else {
-    console.log(`Looks good `);
-    emailField.setCustomValidity(``);
-    emailSuccessMessage.innerHTML = `Looks good ✅`;
-    emailErrorMessage.innerHTML = ``;
-    setValidState(emailField, VALID_STATE);
-  }
-  if (emailField.validationMessage) {
-    emailSuccessMessage.innerHTML = ``;
-    emailErrorMessage.innerHTML = `<span>
-    ${emailField.validationMessage} ❌
-    <span>
-  `;
-    setValidState(emailField, INVALID_STATE);
+    loginResultElement.innerHTML = `Please make sure to enter a valid inputs`;
+    loginResultElement.style.color = "red";
   }
 }
 
-function setValidState(inputField, state) {
-  console.log(inputField);
-  inputField.className = state;
-}
-
-function handelPasswordChange() {
-  console.log(`handel password`);
-  const errorMessages = [];
-  const passwordFieldValue = passwordField.value;
-  if (isBlank(passwordFieldValue)) {
-    errorMessages.push(VALIDATION_MESSAGES.PLEASE_ENTER_YOUR_PASSWORD);
-  }
-  if (!isAtLeastEightChars(passwordFieldValue)) {
-    errorMessages.push(
-      VALIDATION_MESSAGES.PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_EIGHT_CHARS
-    );
-  }
-  if (!isAtLeastOneCapitalCaseLetter(passwordFieldValue)) {
-    errorMessages.push(
-      VALIDATION_MESSAGES.PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_CAPITIAL_CASE_LETTER
-    );
-  }
-  if (!isAtLeastOneSmallCaseLetter(passwordFieldValue)) {
-    errorMessages.push(
-      VALIDATION_MESSAGES.PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_SMALL_CASE_LETTER
-    );
-  }
-  if (!isAtLeastOneDigit(passwordFieldValue)) {
-    errorMessages.push(
-      VALIDATION_MESSAGES.PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_DIGIT
-    );
-  }
-  if (!isAtLeastOneSpecialChar(passwordFieldValue)) {
-    errorMessages.push(
-      VALIDATION_MESSAGES.PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_SPECIAL_CHAR
-    );
+function displayInputFieldValidationMessages(
+  inputFieldValidationElements,
+  successMessages,
+  errorMessages
+) {
+  if (successMessages.length === 0) {
+    inputFieldValidationElements.successMessageElement.innerHTML = ``;
+  } else {
+    inputFieldValidationElements.successMessageElement.innerHTML =
+      successMessages
+        .map((successMessage) => {
+          return `
+      <span>
+      ${successMessage}
+      </span>
+      `;
+        })
+        .join("");
   }
   if (errorMessages.length === 0) {
-    passwordSuccessMessage.innerHTML = `Looks good ✅`;
-    passwordErrorMessage.innerHTML = ``;
-    setValidState(passwordField, VALID_STATE);
+    inputFieldValidationElements.errorMessageElement.innerHTML = ``;
   } else {
-    passwordSuccessMessage.innerHTML = ``;
-    passwordErrorMessage.innerHTML = errorMessages
+    inputFieldValidationElements.errorMessageElement.innerHTML = errorMessages
       .map((errorMessage) => {
-        return `<span>
-        ${errorMessage} ❌
-        <span>
-        <br>
+        return `
+      <span>
+       ❌ ${errorMessage}
+      </span>
+      <br/>
       `;
       })
       .join("");
+  }
+}
+
+function validateEmail() {
+  loginResultElement.innerHTML = ``;
+  const emailFieldValue = emailField.value;
+  const { successMessages, errorMessages } =
+    getEmailValidationMessages(emailFieldValue);
+  isValidEmail = errorMessages.length === 0;
+  if (isValidEmail) {
+    setValidState(emailField, VALID_STATE);
+  } else {
+    setValidState(emailField, INVALID_STATE);
+  }
+  displayInputFieldValidationMessages(
+    emailFieldValidationElements,
+    successMessages,
+    errorMessages
+  );
+}
+
+function getEmailValidationMessages(email) {
+  const successMessages = [];
+  const errorMessages = [];
+  if (isBlank(email)) {
+    errorMessages.push(VALIDATION_MESSAGES.EMAIL_REQUIRED);
+  }
+  if (!isEmail(email)) {
+    console.log(`Not valid email`);
+    errorMessages.push(VALIDATION_MESSAGES.EMAIL_INVALID);
+  }
+  if (errorMessages.length === 0) {
+    successMessages.push(`Looks good ✅`);
+  }
+  return { successMessages, errorMessages };
+}
+
+function validatePassword() {
+  loginResultElement.innerHTML = ``;
+  const passwordFieldValue = passwordField.value;
+  const { errorMessages, successMessages } =
+    getPasswordValidationMessages(passwordFieldValue);
+  isValidPassword = errorMessages.length === 0;
+  if (isValidPassword) {
+    setValidState(passwordField, VALID_STATE);
+  } else {
     setValidState(passwordField, INVALID_STATE);
   }
+  displayInputFieldValidationMessages(
+    passwordFieldValidationElements,
+    successMessages,
+    errorMessages
+  );
+}
+
+function getPasswordValidationMessages(password) {
+  const successMessages = [];
+  const errorMessages = [];
+
+  if (isBlank(password)) {
+    errorMessages.push(VALIDATION_MESSAGES.PASSWORD_REQUIRED);
+  }
+  if (!isAtLeastEightChars(password)) {
+    errorMessages.push(VALIDATION_MESSAGES.PASSWORD_MIN_LENGTH);
+  }
+  if (!isAtLeastOneCapitalCaseLetter(password)) {
+    errorMessages.push(VALIDATION_MESSAGES.PASSWORD_AT_LEAST_CAPITAL);
+  }
+  if (!isAtLeastOneSmallCaseLetter(password)) {
+    errorMessages.push(VALIDATION_MESSAGES.PASSWORD_AT_LEAST_LOWER);
+  }
+  if (!isAtLeastOneDigit(password)) {
+    errorMessages.push(VALIDATION_MESSAGES.PASSWORD_AT_LEAST_DIGIT);
+  }
+  if (!isAtLeastOneSpecialChar(password)) {
+    errorMessages.push(VALIDATION_MESSAGES.PASSWORD_AT_LEAST_SPECIAL);
+  }
+  if (errorMessages.length === 0) {
+    successMessages.push(`Looks good ✅`);
+  }
+  return {
+    successMessages,
+    errorMessages,
+  };
 }
 
 function triggerPasswordEye() {
@@ -132,4 +195,8 @@ function triggerPasswordEye() {
     eye.className = `fa-solid fa-eye-slash`;
     passwordField.type = "password";
   }
+}
+
+function setValidState(inputField, state) {
+  inputField.className = state;
 }
