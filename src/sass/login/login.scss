@@ -1,8 +1,9 @@
 @import "../shared/validation-input-states.scss";
 
 input {
-  padding: 12px 24px;
+  padding: 16px 32px;
   border-color: $grey-color;
+  font-size: 18px;
 }
 
 #login-section {
@@ -10,9 +11,8 @@ input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 12px;
-  width: 420px;
-  height: 420px;
+  width: 600px;
+  height: 600px;
   background-color: $white-color;
 }
 
@@ -21,14 +21,14 @@ input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px 48px;
+  gap: 20px;
+  padding: 32px 64px;
   width: 100%;
 }
 
 #email-input {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-direction: column;
   width: 100%;
   & .email {
@@ -36,41 +36,50 @@ input {
     flex-grow: 2;
     #email-field {
       flex-grow: 2;
+      font-size: 18px;
     }
   }
 }
 
 #password-input {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-direction: column;
   width: 100%;
   & .password {
+    position: relative;
     display: flex;
     flex-grow: 2;
     #password-field {
-      flex-grow: 2;
+      flex-grow: 3;
+      font-size: 18px;
     }
   }
   & .eye {
+    position: absolute;
     color: $teal-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
-    font-size: 18px;
+    padding: 16px;
+    font-size: 22px;
+    right: 0;
+  }
+  & .not-valid-state + .icon::after {
+    transform: translate(-5em, -50%) !important;
+  }
+  & .valid-state + .icon::after {
+    transform: translate(-5em, -50%) !important;
   }
 }
 
 #actions {
   width: 100%;
   #login-button {
-    padding: 12px 24px;
+    padding: 16px 32px;
     background-color: $teal-color;
     color: $white-color;
     width: 100%;
     border: none;
     cursor: pointer;
+    font-size: 18px;
     &:hover {
       background-color: $light-teal-color;
     }

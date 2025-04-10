@@ -1,18 +1,13 @@
 export const VALIDATION_MESSAGES = {
-  PLEASE_ENTER_YOUR_EMAIL: "Please enter your email",
-  PLEASE_MAKE_SURE_TO_ENTER_A_VALID_EMAIL:
-    "Please make sure to enter a valid email ",
-  PLEASE_ENTER_YOUR_PASSWORD: "Please enter your password",
-  PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_EIGHT_CHARS:
-    "Please make sure that the password has at least 8 chars",
-  PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_CAPITIAL_CASE_LETTER:
-    "Please make sure that the passowrd has at least one capital case letter",
-  PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_SMALL_CASE_LETTER:
-    "Please make sure that the passowrd has at least one small case letter",
-  PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_DIGIT:
-    "Please make sure that the passowrd has at least one digit",
-  PLEASE_MAKE_SURE_THAT_THE_PASSWORD_HAS_AT_LEAST_ONE_SPECIAL_CHAR:
-    "Please make sure that the passowrd has at least one special char",
+  EMAIL_REQUIRED: "Please enter your email",
+  EMAIL_INVALID: "Please make sure to enter a valid email",
+  PASSWORD_REQUIRED: "Please enter your password",
+  PASSWORD_MIN_LENGTH: "Password must be at least 8 characters",
+  PASSWORD_AT_LEAST_CAPITAL: "Password must have at least one uppercase letter",
+  PASSWORD_AT_LEAST_LOWER: "Password must have at least one lowercase letter",
+  PASSWORD_AT_LEAST_DIGIT: "Password must have at least one digit",
+  PASSWORD_AT_LEAST_SPECIAL:
+    "Password must have at least one special character",
 };
 
 export const isBlank = (inputFieldValue) => {

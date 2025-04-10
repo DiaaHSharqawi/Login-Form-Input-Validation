@@ -5,7 +5,7 @@
 .valid-state {
   border-color: $green-color;
   outline-color: $green-color;
-  box-shadow: 0 0 5px $green-color;
+  box-shadow: 0 0 8px $green-color;
   position: relative;
   + .icon::after {
     position: absolute;
@@ -19,7 +19,7 @@
 .not-valid-state {
   border-color: $red-color;
   outline-color: $red-color;
-  box-shadow: 0 0 5px $red-color;
+  box-shadow: 0 0 8px $red-color;
   position: relative;
   + .icon::after {
     position: absolute;
@@ -32,7 +32,7 @@
 }
 
 .success-message {
-  font-size: 12px;
+  font-size: 16px;
   color: $green-color;
   text-align: start;
   width: 100%;
@@ -42,7 +42,7 @@
 }
 
 .error-message {
-  font-size: 12px;
+  font-size: 16px;
   color: $red-color;
   text-align: start;
   width: 100%;

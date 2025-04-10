@@ -37,7 +37,7 @@ footer {
 .valid-state {
   border-color: #008000;
   outline-color: #008000;
-  box-shadow: 0 0 5px #008000;
+  box-shadow: 0 0 8px #008000;
   position: relative;
 }
 .valid-state + .icon::after {
@@ -51,7 +51,7 @@ footer {
 .not-valid-state {
   border-color: #ff0000;
   outline-color: #ff0000;
-  box-shadow: 0 0 5px #ff0000;
+  box-shadow: 0 0 8px #ff0000;
   position: relative;
 }
 .not-valid-state + .icon::after {
@@ -64,7 +64,7 @@ footer {
 }
 
 .success-message {
-  font-size: 12px;
+  font-size: 16px;
   color: #008000;
   text-align: start;
   width: 100%;
@@ -74,7 +74,7 @@ footer {
 }
 
 .error-message {
-  font-size: 12px;
+  font-size: 16px;
   color: #ff0000;
   text-align: start;
   width: 100%;
@@ -84,8 +84,9 @@ footer {
 }
 
 input {
-  padding: 12px 24px;
+  padding: 16px 32px;
   border-color: #808080;
+  font-size: 18px;
 }
 
 #login-section {
@@ -93,9 +94,8 @@ input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 12px;
-  width: 420px;
-  height: 420px;
+  width: 600px;
+  height: 600px;
   background-color: #fff;
 }
 
@@ -104,14 +104,14 @@ input {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px 48px;
+  gap: 20px;
+  padding: 32px 64px;
   width: 100%;
 }
 
 #email-input {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-direction: column;
   width: 100%;
 }
@@ -121,40 +121,49 @@ input {
 }
 #email-input .email #email-field {
   flex-grow: 2;
+  font-size: 18px;
 }
 
 #password-input {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-direction: column;
   width: 100%;
 }
 #password-input .password {
+  position: relative;
   display: flex;
   flex-grow: 2;
 }
 #password-input .password #password-field {
-  flex-grow: 2;
+  flex-grow: 3;
+  font-size: 18px;
 }
 #password-input .eye {
+  position: absolute;
   color: #009578;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
-  font-size: 18px;
+  padding: 16px;
+  font-size: 22px;
+  right: 0;
+}
+#password-input .not-valid-state + .icon::after {
+  transform: translate(-5em, -50%) !important;
+}
+#password-input .valid-state + .icon::after {
+  transform: translate(-5em, -50%) !important;
 }
 
 #actions {
   width: 100%;
 }
 #actions #login-button {
-  padding: 12px 24px;
+  padding: 16px 32px;
   background-color: #009578;
   color: #fff;
   width: 100%;
   border: none;
   cursor: pointer;
+  font-size: 18px;
 }
 #actions #login-button:hover {
   background-color: #06bc98;
