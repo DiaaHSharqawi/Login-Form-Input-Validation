@@ -1,3 +1,7 @@
+// TODO : 
+// Same input width 
+// Check email validation
+
 import {
   isAtLeastEightChars,
   isAtLeastOneCapitalCaseLetter,
