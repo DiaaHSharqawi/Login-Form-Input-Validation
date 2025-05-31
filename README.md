@@ -1,16 +1,16 @@
-# Login Form Input Validation Task
+# Login Form Input Validation
 
-This repository contains a login form with input validation. The form is styled using SCSS, a preprocessor scripting language that is compiled into CSS. The Live Sass Compiler extension in VS Code is used to compile SCSS files.
+This repository contains a login form with input validation. The form is styled using SCSS, a preprocessor scripting language that is compiled into CSS. The Live Sass Compiler extension in VS Code is used to facilitate SCSS compilation.
 
 ## Demo
 
-You can view a live demo of the login form on GitHub Pages: [Live Demo](https://diaahsharqawi.github.io/Login-Form-Input-Validation-Task/)
+You can view a live demo of the login form on GitHub Pages: [Live Demo](https://diaahsharqawi.github.io/Login-Form-Input-Validation/)
 
 ## Technologies Used
 
 - **JavaScript**: Handles form input validation.
 - **CSS**: Styles the login form.
-- **SCSS**: Sassy CSS, a preprocessor scripting language that is compiled into CSS. Used [**Live Sass Compiler**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass) extension in VS Code to compile SCSS files.
+- **SCSS**: Sassy CSS, a preprocessor scripting language that is compiled into CSS. Used [**Live Sass Compiler**](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass) extension in VS Code for real-time compilation.
 - **HTML**: Structures the login form.
 
 ## Getting Started
