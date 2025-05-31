@@ -4,7 +4,7 @@ This repository contains a login form with input validation. The form is styled 
 
 ## Demo
 
-You can view a live demo of the login form on GitHub Pages: [Live Demo](https://diaahsharqawi.github.io/Login-Form-Input-Validation/)
+You can view a live demo of the login form on GitHub Pages: [Live Demo](https://itg-software-front-end-internship.github.io/Login-Form-Input-Validation/)
 
 ## Technologies Used
 
